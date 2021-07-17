@@ -1,0 +1,242 @@
+/* CSS Variables*/
+
+:root{
+    --primary:#ddd;/*light grey*/
+    --dark:#333;/*bit black*/
+    --light:#fff;  /*bit white */
+    --shadow:1px 1px 10px 2px rgba(104,104,104,0.8); /*1st property right side or left 2nd y me shift 3rd shadow kitna chahiye 4rth blur */
+
+}
+
+html{  /*doubt hai color*/
+    box-sizing: border-box;/*Include padding and border in the element's total width and height:*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);  /*var to use the css variable jisme kuch nhi usme dark ho jyga*/
+}
+
+body{
+    background: #ccc;
+    margin: 30px 50px; /*30px top and bottom 50px left and right*/
+    line-height: 1.6; /*Set the line height for different <div> elements:*/
+
+}
+.btn
+{
+    background:var(--dark);
+    color: var(--light); /*text or content color*/
+    text-decoration: none;
+    padding: .6rem 1.3rem; /*1 rem=16px*/
+    border: 0;
+    
+}
+
+img
+{
+    max-width: 100%; /*so that it can contains its whole div at max*/
+}
+
+.wrapper 
+{
+    display: grid;
+    grid-gap:20px;
+}
+
+/*navigation*/
+.main-nav ul 
+{
+    display: grid;
+    grid-gap:20px;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(4,1fr);
+}
+.main-nav a  /*doubt*/
+{
+    background: var(--primary);
+    display: block; /*21:53*/ /*When it comes to margins and padding, browsers treat inline elements differently. You can add space to the left and right on an inline element, but you cannot add height to the top or bottom padding or margin of an inline element.*/
+    text-decoration: none;
+    padding: .8rem 1.6rem;
+    text-align:center;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow);
+    /* justify-items: center; */
+}
+
+.main-nav a:hover
+{   
+    transform: scale(1.1);
+    background: var(--dark);
+    color: var(--light);
+}
+
+/* top container */
+.top-container 
+{
+    display: grid;
+    grid-gap:20px;
+    grid-template-areas:
+    'showcase showcase top-box-a'   /*this is like setting up or covering up the grid area*/
+    'showcase showcase top-box-b';
+
+}
+
+/*showcase*/
+.showcase 
+{
+    grid-area: showcase;   /*assigning values i.e content to those area */
+    min-height: 400px; /*with increase in min height gap between both rightwardss box will also increase*/
+    background: url(images/webimg.jpg);
+    background-size: cover; /*The background image is resized to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges.*/
+    background-position: center;
+    padding: 3rem;
+/*  USE TE GRID TO LAYOUT ALL THE BOXES ALL THE AREQAS OF THE SITE OR UI AND USE FLEXBOX TO ALIGN THINGS INSIDE ELEMENTS */
+     display: flex;
+     flex-direction: column;
+     align-items: start;  /*to take everything at start */
+     justify-content: center; /*to take whole content in center */
+     box-shadow: var(--shadow);
+    ;
+}
+
+.showcase h1 
+{
+    font-size: 4rem;
+    margin-bottom: 0; /* so that web presence and paragraph comes closer i.e no margin*/
+    color: var(--light);
+}
+
+.showcase p 
+{
+    font-size: 1.3rem;
+    margin-top: 0;
+    /*color: rgb(110, .7);*/
+    font-weight: bold;
+}
+
+.top-box 
+{
+    background: var(--primary);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    box-shadow: var(--shadow);
+    padding: .5rem;
+}
+
+.top-box .price 
+{
+    font-size: 2.5rem;
+}
+.top-box-a 
+{
+    grid-area: top-box-a;
+}
+
+.top-box-b 
+{
+    grid-area: top-box-b;
+}
+
+/* boxes */ 
+
+.boxes 
+{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(200px,2fr)); /* it makes the grid more responsive min size 200x and 1 module atleast */
+}
+
+.box
+{
+   background: var(--primary);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+/*info*/
+.info
+{
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap:30px;
+    grid-template-columns:repeat(2,1fr) ;
+    padding: 3rem;
+    
+
+}
+
+/*portfolio*/
+.portfolio
+{
+    display: grid;
+    grid-gap:20px;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+.portfolio img 
+{
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+
+/*footer*/
+
+footer{
+    margin-top: 2rem;
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 1rem;
+}
+
+/*media queries for 700 and 500*/
+
+
+@media(max-width:700px)
+{
+    .top-container
+    {
+        grid-template-areas: 
+       ' showcase showcase'
+        
+       'top-box-a top-box-b';
+
+    }
+    .showcase h1 
+    {
+        font-size: 2.5rem;;
+    }
+    .main-nav ul 
+    {
+        grid-template-columns: 1fr; /*so that only one item per row*/
+    }
+    .info
+    {
+        grid-template-columns: 1fr; /*so that only one item per row*/
+
+    }
+    .info .btn 
+    {
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+}
+
+
+@media(max-width:500px)
+{
+    .top-container
+    {
+        grid-template-areas: 
+       ' showcase '
+        
+       'top-box-a ' 
+       'top-box-b';
+
+    }
+    
+}
